@@ -1,6 +1,6 @@
 {
   "buildCommand": "npm run build",
   "env": {
-    "CONVEX_DEPLOYMENT": "@convex-deployment"
+    "VITE_CONVEX_URL": "https://upbeat-ostrich-598.convex.cloud"
   }
 }
