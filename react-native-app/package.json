@@ -1,7 +1,6 @@
 {
   "name": "todo-react-native-app",
   "version": "1.0.0",
-  "type": "module",
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "expo start",

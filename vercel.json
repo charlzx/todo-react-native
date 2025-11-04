@@ -1,6 +1,7 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npx convex codegen && npm run build",
   "env": {
-    "VITE_CONVEX_URL": "https://upbeat-ostrich-598.convex.cloud"
+    "VITE_CONVEX_URL": "https://upbeat-ostrich-598.convex.cloud",
+    "CONVEX_DEPLOYMENT": "prod:upbeat-ostrich-598"
   }
 }
