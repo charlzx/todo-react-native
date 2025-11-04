@@ -18,33 +18,6 @@ A full-stack todo application with real-time synchronization. This repository co
 ✅ **Cross-Platform** - Works on web browsers, iOS, and Android  
 ✅ **Offline Support** - Convex handles offline caching automatically
 
-## 🏗️ Project Structure
-
-\`\`\`
-todo-react-native/
-├── src/                 # ⚛️ React Web App (Main Application)
-│   ├── components/      # Web UI components
-│   ├── pages/          # Web pages
-│   ├── parts/          # Reusable web parts
-│   ├── App.jsx         # Web app entry point
-│   └── main.jsx        # Web root
-├── public/             # Web static assets & images
-├── convex/             # 🔄 Convex Backend (Shared by Web & Mobile)
-│   ├── todos.ts        # Todo CRUD operations
-│   ├── schema.ts       # Database schema
-│   └── _generated/     # Auto-generated Convex files
-├── react-native-app/   # 📱 React Native Mobile App
-│   ├── src/
-│   │   ├── components/ # Mobile UI components
-│   │   ├── contexts/   # Theme and state management
-│   │   └── assets/     # Mobile images and icons
-│   ├── App.js          # Mobile app entry point
-│   ├── app.json        # Expo configuration
-│   └── package.json    # Mobile dependencies
-├── vite.config.js      # Web build configuration
-├── tailwind.config.js  # Web styling configuration
-└── package.json        # Web dependencies (main)
-\`\`\`
 
 ## 🚀 Quick Start
 
