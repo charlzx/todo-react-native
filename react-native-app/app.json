@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Todo App",
+    "slug": "todo-react-native-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.todoapp.native"
+    },
+    "android": {
+      "package": "com.todoapp.native"
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
