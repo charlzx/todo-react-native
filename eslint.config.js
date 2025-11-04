@@ -52,6 +52,12 @@ export default [
     },
   },
   {
-    ignores: ['node_modules/**', 'dist/**', 'build/**', 'convex/_generated/**'],
+    ignores: [
+      'node_modules/**',
+      'dist/**',
+      'build/**',
+      'convex/_generated/**',
+      'react-native-app/**',  // Ignore React Native app folder
+    ],
   },
 ];

@@ -1,6 +1,7 @@
 {
   "name": "todo-react-native-app",
   "version": "1.0.0",
+  "type": "module",
   "main": "expo/AppEntry.js",
   "scripts": {
     "start": "expo start",
@@ -8,7 +9,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "dev": "npm run dev:backend & npm run start",
-    "dev:backend": "convex dev"
+    "dev:backend": "convex dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@expo/metro-runtime": "~4.0.1",
@@ -29,6 +32,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "eslint": "^9.39.1",
+    "eslint-config-expo": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
     "typescript": "^5.3.3"
   },
   "private": true

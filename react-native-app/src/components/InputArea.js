@@ -1,11 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   TextInput,
   TouchableOpacity,
   StyleSheet,
   Text,
-  Animated,
 } from 'react-native';
 
 const InputArea = ({

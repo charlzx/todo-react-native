@@ -8,7 +8,6 @@ import {
   Platform,
   SafeAreaView,
   TouchableOpacity,
-  Image,
 } from 'react-native';
 import { useQuery, useMutation } from 'convex/react';
 import { api } from '../../convex/_generated/api';
@@ -46,6 +45,7 @@ const Todo = () => {
         setSelectedTodo(updatedTodo);
       }
     }
+     
   }, [list]);
 
   const handleSubmit = async (input, description = '', dueDate = '') => {
