@@ -4,10 +4,14 @@ import { StyleSheet, View } from 'react-native';
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 import { ThemeProvider } from './src/contexts/ThemeContext';
 import Todo from './src/components/Todo';
+import Constants from 'expo-constants';
 
 // Initialize Convex client
-// Make sure to set EXPO_PUBLIC_CONVEX_URL in your environment
-const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL || "");
+const convexUrl = Constants.expoConfig?.extra?.convexUrl || 
+                  process.env.EXPO_PUBLIC_CONVEX_URL || 
+                  "https://upbeat-ostrich-598.convex.cloud";
+
+const convex = new ConvexReactClient(convexUrl);
 
 export default function App() {
   return (

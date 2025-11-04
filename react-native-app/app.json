@@ -10,10 +10,13 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.todoapp.native"
+      "bundleIdentifier": "com.charlzx.todoapp"
     },
     "android": {
-      "package": "com.todoapp.native"
+      "package": "com.charlzx.todoapp",
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      }
     },
     "web": {
       "bundler": "metro"
@@ -21,7 +24,8 @@
     "extra": {
       "eas": {
         "projectId": "e05db838-6e3f-4c89-a6d8-a37cc9a57b19"
-      }
+      },
+      "convexUrl": "https://upbeat-ostrich-598.convex.cloud"
     },
     "plugins": [
       "expo-asset"
