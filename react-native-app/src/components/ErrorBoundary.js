@@ -1,40 +1,32 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hasError: false, error: null, errorInfo: null };
+    this.state = { hasError: false, error: null };
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    return { hasError: true };
+    return { hasError: true, error };
   }
 
   componentDidCatch(error, errorInfo) {
-    // You can also log the error to an error reporting service
-    this.setState({
-      error: error,
-      errorInfo: errorInfo,
-    });
-    console.error("Uncaught error:", error, errorInfo);
+    console.error('Error caught by boundary:', error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
       return (
         <View style={styles.container}>
-          <Text style={styles.title}>Something went wrong.</Text>
-          {this.state.error && (
-            <ScrollView style={styles.scrollView}>
-              <Text style={styles.errorTitle}>Error:</Text>
-              <Text style={styles.errorText}>{this.state.error.toString()}</Text>
-              <Text style={styles.errorTitle}>Component Stack:</Text>
-              <Text style={styles.errorText}>{this.state.errorInfo?.componentStack}</Text>
-            </ScrollView>
-          )}
+          <Text style={styles.title}>Something went wrong</Text>
+          <Text style={styles.error}>{this.state.error?.toString()}</Text>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => this.setState({ hasError: false, error: null })}
+          >
+            <Text style={styles.buttonText}>Try Again</Text>
+          </TouchableOpacity>
         </View>
       );
     }
@@ -49,30 +41,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
-    backgroundColor: '#f8d7da',
+    backgroundColor: '#fff',
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: '#721c24',
-    marginBottom: 20,
-  },
-  scrollView: {
-    width: '100%',
-    backgroundColor: '#f1f1f1',
-    borderRadius: 8,
-    padding: 10,
-  },
-  errorTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 10,
+    marginBottom: 10,
     color: '#333',
   },
-  errorText: {
+  error: {
     fontSize: 14,
-    color: '#555',
-    marginTop: 5,
+    color: '#ff0000',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  button: {
+    backgroundColor: '#3A7CFD',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
 

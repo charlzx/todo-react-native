@@ -1,117 +1,172 @@
-# React Native Todo App
+# 📱 Todo App - React Native Mobile
 
-This is the React Native version of the Todo application, converted from the web version.
+A full-featured todo application built with React Native and Expo, powered by Convex for real-time backend synchronization.
 
-## Prerequisites
+## ✨ Features
+
+- ✅ **Create, Edit, Delete Todos** - Full CRUD operations
+- 📝 **Rich Todo Details** - Add descriptions and due dates
+- ✔️ **Toggle Completion** - Mark todos as complete/incomplete
+- 🔍 **Search** - Search todos by title or description
+- 🎯 **Filter** - View All, Active, or Completed todos
+- 🎨 **Drag & Drop** - Long-press and drag to reorder
+- 🌓 **Dark Mode** - Auto-detects system theme with manual toggle
+- ⚡ **Real-time Sync** - Changes sync instantly with Convex backend
+- 📱 **Native Mobile Experience** - Built with React Native
+
+## 🚀 Quick Start
+
+### Prerequisites
 
 - Node.js (v14 or later)
 - npm or yarn
-- Expo CLI
-- For iOS: Xcode and CocoaPods (Mac only)
-- For Android: Android Studio and Android SDK
+- [Expo Go](https://expo.dev/client) app on your mobile device
 
-## Installation
+### Installation
 
-1. Install dependencies:
+1. **Install dependencies:**
 ```bash
 cd react-native-app
 npm install
 ```
 
-2. Set up Convex environment:
-   - Copy the `.env.local` file from the parent directory or create a new one
-   - Add your Convex deployment URL:
-```
-EXPO_PUBLIC_CONVEX_URL=https://your-convex-deployment-url.convex.cloud
-```
+2. **Set up environment variables:**
+   - The `.env.local` file is already configured with the production Convex URL
+   - If needed, update it in `app.json` under `extra.convexUrl`
 
-3. Start the Convex backend:
-```bash
-npm run dev:backend
-```
-
-4. In a new terminal, start the Expo development server:
+3. **Start the development server:**
 ```bash
 npm start
 ```
 
-## Running the App
+4. **Run on your device:**
+   - Scan the QR code with Expo Go (Android) or Camera app (iOS)
+   - Or press `w` for web, `i` for iOS simulator, `a` for Android emulator
 
-### On iOS Simulator (Mac only)
+## 📦 Building APK
+
+### For Testing (Development Build)
+
 ```bash
-npm run ios
+# Login to Expo
+eas login
+
+# Build APK
+eas build --platform android --profile preview
 ```
 
-### On Android Emulator
+### For Production
+
 ```bash
-npm run android
+eas build --platform android --profile production
 ```
 
-### On Web
-```bash
-npm run web
-```
+After the build completes (10-15 minutes), download the APK from the provided link.
 
-### Using Expo Go App
-1. Install Expo Go on your iOS or Android device
-2. Scan the QR code shown in the terminal or Expo Dev Tools
+**See [BUILD_APK_GUIDE.md](./BUILD_APK_GUIDE.md) for detailed instructions.**
 
-## Features
-
-- ✅ Create, read, update, and delete todos
-- ✅ Mark todos as complete/incomplete
-- ✅ Add descriptions and due dates to todos
-- ✅ Filter todos (All, Active, Completed)
-- ✅ Search todos by title or description
-- ✅ Drag and drop to reorder todos
-- ✅ Dark mode support
-- ✅ Real-time sync with Convex backend
-
-## Key Differences from Web Version
-
-1. **UI Components**: Replaced HTML elements with React Native components (View, Text, TouchableOpacity, etc.)
-2. **Styling**: Converted Tailwind CSS to React Native StyleSheet
-3. **Drag & Drop**: Using `react-native-draggable-flatlist` instead of `@dnd-kit`
-4. **Theme**: Using React Native's `useColorScheme` and AsyncStorage for theme persistence
-5. **Navigation**: Single-screen app with conditional rendering for detail view
-6. **Images**: Would need to be added to `assets/images/` directory and imported using `require()`
-
-## Project Structure
+## 📂 Project Structure
 
 ```
 react-native-app/
-├── App.js                          # Main app entry point
+├── App.js                           # App entry with Convex & Theme providers
+├── app.json                         # Expo configuration
+├── package.json                     # Dependencies
+├── .env.local                       # Environment variables
 ├── src/
 │   ├── components/
-│   │   ├── Todo.js                 # Main todo component
-│   │   ├── InputArea.js            # Todo input form
-│   │   ├── ListOfActivity.js      # Draggable todo list
-│   │   ├── InformationAndFilter.js # Filter bar
-│   │   └── TodoDetail.js          # Todo detail view
+│   │   ├── Todo.js                  # Main container component
+│   │   ├── InputArea.js             # Create/edit todo form
+│   │   ├── ListOfActivity.js        # Draggable todo list
+│   │   ├── InformationAndFilter.js  # Filters & item counter
+│   │   ├── TodoDetail.js            # Todo detail view
+│   │   └── ErrorBoundary.js         # Error handling component
 │   ├── contexts/
-│   │   └── ThemeContext.js        # Theme context provider
+│   │   └── ThemeContext.js          # Dark mode management
 │   └── assets/
-│       └── images/                # App images
-├── convex/                        # Convex backend (shared with web app)
-├── package.json
-├── app.json
-└── babel.config.js
+│       └── images/                  # SVG icons and images
+└── convex/                          # Backend functions (shared with web)
+    ├── schema.ts                    # Database schema
+    └── todos.ts                     # Todo CRUD functions
 ```
 
-## Troubleshooting
+## 🛠️ Technologies
 
-### Convex Connection Issues
-- Ensure your `EXPO_PUBLIC_CONVEX_URL` is correctly set
-- Make sure the Convex backend is running (`npm run dev:backend`)
+- **React Native** - Mobile framework
+- **Expo** - Development platform
+- **Convex** - Real-time backend
+- **React Context** - State management
+- **AsyncStorage** - Local persistence
+- **react-native-draggable-flatlist** - Drag & drop functionality
+- **react-native-gesture-handler** - Touch gestures
 
-### Drag and Drop Not Working
-- Ensure `react-native-gesture-handler` is properly installed
-- On Android, you may need to add the handler to MainActivity
+## 🔧 Configuration
 
-### Dark Mode Not Persisting
-- Check that `@react-native-async-storage/async-storage` is installed correctly
-- Clear app data and restart if issues persist
+### Convex Backend
 
-## License
+The app is configured to use the production Convex deployment:
+- URL: `https://upbeat-ostrich-598.convex.cloud`
+- Configured in: `app.json` > `extra.convexUrl`
 
-MIT
+### App Identifiers
+
+- **Bundle ID (iOS):** `com.charlzx.todoapp`
+- **Package Name (Android):** `com.charlzx.todoapp`
+
+## 📱 Running on Physical Devices
+
+### Android
+
+1. Install Expo Go from Google Play Store
+2. Scan QR code from the terminal
+3. App loads automatically
+
+Or install the built APK directly.
+
+### iOS
+
+1. Install Expo Go from App Store
+2. Open Camera app and scan QR code
+3. Tap notification to open in Expo Go
+
+## 🐛 Troubleshooting
+
+### White Screen on App Launch
+
+The app includes an ErrorBoundary that will display error details. If you see a white screen:
+1. Check if Convex URL is correctly configured
+2. Ensure you have internet connection
+3. Rebuild the app with `eas build`
+
+### Build Failures
+
+```bash
+# Check for configuration errors
+npx expo-doctor
+
+# Fix dependency versions
+npx expo install --check
+```
+
+### Connection Issues
+
+- Verify `extra.convexUrl` in `app.json`
+- Check network connectivity
+- Ensure Convex deployment is active
+
+## 📄 Scripts
+
+```bash
+npm start          # Start Expo dev server
+npm run android    # Run on Android emulator
+npm run ios        # Run on iOS simulator
+npm run web        # Run on web browser
+```
+
+## 🔄 Sync with Web App
+
+This mobile app shares the same Convex backend with the web application. Changes made on mobile sync in real-time with the web version and vice versa.
+
+## 📧 Support
+
+For issues or questions, please open an issue in the repository.
